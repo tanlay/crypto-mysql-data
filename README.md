@@ -28,7 +28,7 @@ Flags:
 
 ```shell
 ./crypto-mysql-data encrypt -h
-解密
+加密
 
 Usage:
   github.com/tanlay/crypto-mysql-data encrypt [flags]
