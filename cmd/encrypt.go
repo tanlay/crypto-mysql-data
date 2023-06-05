@@ -9,15 +9,15 @@ import (
 )
 
 func init() {
-	RootCmd.AddCommand(DecryptCmd())
+	RootCmd.AddCommand(EncryptCmd())
 }
 
-func DecryptCmd() *cobra.Command {
+func EncryptCmd() *cobra.Command {
 	limit = 100 //设置默认limit为100
 	cmd := &cobra.Command{
-		Use:   "decrypt",
-		Short: "解密",
-		Long:  "解密",
+		Use:   "encrypt",
+		Short: "加密",
+		Long:  "加密",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			tasks := []func(config config.Config) error{
 				SetupGlobalDB,
@@ -29,7 +29,7 @@ func DecryptCmd() *cobra.Command {
 				}
 			}
 			svr := controller.NewDataReportControllerImpl(db.GlobalDB)
-			if err := svr.DataReportBatchDecrypt(startId, limit); err != nil {
+			if err := svr.DataReportBatchEncrypt(startId, limit); err != nil {
 				cmd.PrintErrf(err.Error())
 			}
 			return nil

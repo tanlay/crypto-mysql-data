@@ -21,3 +21,7 @@ func (d *DataReport) TableName() string {
 func (d *DataReport) DecryptedTableName() string {
 	return "data_report_decrypted"
 }
+
+func (d *DataReport) EncryptedTableName() string {
+	return "data_report_encrypted"
+}

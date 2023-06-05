@@ -17,7 +17,8 @@ type Config struct {
 }
 
 type SecretConf struct {
-	DbSecretKey string `json:"db_secret_key" toml:"db_secret_key"`
+	DecSecretKey string `json:"dec_secret_key" toml:"dec_secret_key"`
+	EncSecretKey string `json:"enc_secret_key" toml:"enc_secret_key"`
 }
 
 type LoggerConf struct {

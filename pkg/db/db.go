@@ -19,7 +19,7 @@ func GetGlobalDSN(conf DatabaseConf) (*gorm.DB, error) {
 	mysqlPrefix := "mysql://"
 	if strings.HasPrefix(conf.DSN, mysqlPrefix) {
 		db, err = gorm.Open(mysql.Open(strings.ReplaceAll(conf.DSN, mysqlPrefix, "")), &gorm.Config{
-			Logger: logger.Default.LogMode(logger.Error),
+			Logger: logger.Default.LogMode(logger.Error), //不打印慢SQL日志
 		})
 		if err != nil {
 			return nil, err

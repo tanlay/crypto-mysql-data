@@ -5,10 +5,12 @@ import (
 )
 
 var (
-	cfgFile string
+	cfgFile string //配置文件
+	startId int64  //指定初始id
+	limit   uint64 //限制查询条数
 )
 
 var RootCmd = &cobra.Command{
-	Use:   "github.com/tanlay/crypto-mysql-data",
-	Short: "解密mysql-data",
+	Use:   "crypto-mysql-data",
+	Short: "加解密mysql数据",
 }
