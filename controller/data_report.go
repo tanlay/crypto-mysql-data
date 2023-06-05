@@ -31,6 +31,7 @@ var NewDataReportControllerImpl = func(db *gorm.DB) DataReportControllerInterfac
 func (d *DataReportControllerImpl) DataReportBatchDecrypt(id int64, limit uint64) error {
 	dataReportDao := dao.NewDataReportDaoImpl(d.db)
 	dataReportDecryptedDao := dao.NewDataReportDecryptedDaoImpl(d.db)
+	sinceTime := time.Now()
 	if limit > 1000 {
 		return errors.New("超过单词查询的解密数量")
 	}
@@ -89,13 +90,14 @@ func (d *DataReportControllerImpl) DataReportBatchDecrypt(id int64, limit uint64
 		d.logger.Info(fmt.Sprintf("已解密%d,总数量%d,当前进度%.2f%%,最新一条数据id: %d",
 			decryptCount, total, float64(decryptCount)/float64(total)*100, id))
 	}
-	d.logger.Info("数据解密完成")
+	d.logger.Info(fmt.Sprintf("数据解密完成, 耗时%v", time.Since(sinceTime)))
 	return nil
 }
 
 func (d *DataReportControllerImpl) DataReportBatchEncrypt(id int64, limit uint64) error {
 	dataReportDecrypted := dao.NewDataReportDaoImpl(d.db)
 	dataReportEncrypted := dao.NewDataReportEncryptedDaoImpl(d.db)
+	sinceTime := time.Now()
 	if limit > 1000 {
 		return errors.New("超过单词查询的加密数量")
 	}
@@ -154,6 +156,6 @@ func (d *DataReportControllerImpl) DataReportBatchEncrypt(id int64, limit uint64
 		d.logger.Info(fmt.Sprintf("已加密%d,总数量%d,当前进度%.2f%%,最新一条数据id: %d",
 			encryptCount, total, float64(encryptCount)/float64(total)*100, id))
 	}
-	d.logger.Info("数据加密完成")
+	d.logger.Info(fmt.Sprintf("数据加密完成, 耗时%v", time.Since(sinceTime)))
 	return nil
 }
