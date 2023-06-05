@@ -37,7 +37,8 @@ Flags:
 dsn="mysql://root:123456@tcp(localhost:3306)/yt_judgery_prod?parseTime=True"
 
 [secret]
-db_secret_key="b44982c8d69333e976e13cbb3ba127fb"
+dec_secret_key="xxxxxxx"   #解密秘钥key: 32位
+enc_secret_key="yyyyyyy"   #加密秘钥key: 32位
 
 [logger]
 env="prod"
