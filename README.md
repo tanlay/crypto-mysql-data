@@ -26,10 +26,41 @@ Flags:
   -s, --start_id int    开始ID编号
 ```
 
+```shell
+./crypto-mysql-data encrypt -h
+解密
+
+Usage:
+  github.com/tanlay/crypto-mysql-data encrypt [flags]
+
+Flags:
+  -c, --config string   配置文件目录 (default "config.toml")
+  -h, --help            help for decrypt
+  -l, --limit uint      查询数量(0-1000),默认100 (default 100)
+  -s, --start_id int    开始ID编号
+```
+
+## 解密全表数据
+```shell
+./crypto-mysql-data decrypt -c config.toml -l 1000
+```
+
+## 加密全表数据
+```shell
+./crypto-mysql-data encrypt -c config.toml -l 1000
+```
+
 ## 解密id大于2527503360441305664的所有记录
-```go
+```shell
 ./crypto-mysql-data decrypt -c config.toml -l 1000 -s 2527503360441305664
 ```
+
+## 加密id大于2527503360441305664的所有记录
+```shell
+./crypto-mysql-data encrypt -c config.toml -l 1000 -s 2527503360441305664
+```
+
+
 
 ## conf.toml配置文件
 ```toml

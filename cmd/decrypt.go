@@ -38,7 +38,7 @@ func DecryptCmd() *cobra.Command {
 			return config.LoadCongFromToml(cfgFile)
 		},
 	}
-	cmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", ".config.toml", "配置文件目录")
+	cmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "config.toml", "配置文件目录")
 	cmd.PersistentFlags().Int64VarP(&startId, "start_id", "s", 0, "开始ID编号")
 	cmd.PersistentFlags().Uint64VarP(&limit, "limit", "l", 100, "查询数量（1-1000）,默认100")
 	return cmd
